@@ -1,18 +1,20 @@
+import java.util.ArrayList;
 package model;
-public class client{
+public class Client{
 
 //attributes
 private String name;
 private String identity;
 private String address;
 private String cellphone;
-
+private ArrayList<Pet> pets;
 //constructor
-public client (String name, String identity, String address, String cellphone){
+public Client (String name, String identity, String address, String cellphone){
 this.name = name;
 this.identity = identity;
 this.address = address;
 this.cellphone = cellphone;
+this.pets= new ArrayList<>();
 }
 public String getName(){
     return name;
@@ -31,6 +33,9 @@ public String getAddress(){
 }
 public void setAddress(String address){
 	this.address = address;
+}
+public ArrayList<Pet> getPets(){
+	return pets;
 }
 
 

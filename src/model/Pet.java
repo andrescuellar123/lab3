@@ -1,10 +1,15 @@
 package model;
-public class {
+public class Pet{
+	
+//constants
+
+public final static  dog = "D";
+public final static cat = "C";
+public final static bird = "B";
+public final static other = "O";
+
 //attributes
-private String dog;
-private String cat;
-private String bird;
-private String other;
+
 private String namePet;
 private double weightPet;
 private String typeOfPet;
