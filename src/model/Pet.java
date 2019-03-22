@@ -3,10 +3,10 @@ public class Pet{
 	
 //constants
 
-public final static  dog = "D";
-public final static cat = "C";
-public final static bird = "B";
-public final static other = "O";
+public final static String DOG = "D";
+public final static String CAT = "C";
+public final static String BIRD = "B";
+public final static String OTHER = "O";
 
 //attributes
 
