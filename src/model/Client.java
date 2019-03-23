@@ -10,6 +10,7 @@ private String name;
 private String identity;
 private String address;
 private String cellphone;
+//Relations
 private ArrayList<Pet> pets;
 
 //constructor
@@ -40,6 +41,9 @@ public void setAddress(String address){
 }
 public ArrayList<Pet> getPets(){
 	return pets;
+}
+public void addPet(Pet p) {
+	pets.add(p);
 }
 
 

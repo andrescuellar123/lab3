@@ -1,4 +1,7 @@
 package model;
+
+import java.util.ArrayList;
+
 public class Pet{
 	
 //constants
@@ -14,6 +17,8 @@ private String namePet;
 private double weightPet;
 private String typeOfPet;
 private int ageOfPet;
+//Relations
+private ArrayList<ClinicalHistory> histories;
 
 //constructor
 
@@ -22,6 +27,7 @@ this.namePet = namePet;
 this.weightPet = weightPet;
 this.typeOfPet =typeOfPet;
 this.ageOfPet = ageOfPet;
+histories= new ArrayList<ClinicalHistory>();
 }
 public String getNamePet(){
 	return namePet;

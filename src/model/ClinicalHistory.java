@@ -1,4 +1,7 @@
 package model;
+
+import java.util.ArrayList;
+
 public class ClinicalHistory{
 	
 //constants
@@ -15,8 +18,13 @@ private double weightPet;
 private String typeOfPet;
 private int ageOfPet;
 
+//Relations
+private HistorialDate admissionDate;
+private ArrayList<Medicament> medicaments;
+private Client owner;
 
-public ClinicalHistory (String symptom, String diagnostic , boolean state, String race, String namePet,double weightPet , String typeOfPet, int ageOfPet){
+
+public ClinicalHistory (String symptom, String diagnostic , boolean state, String race, String namePet,double weightPet , String typeOfPet, int ageOfPet, int day, int month, int year, Client c){
 	this.symptom = symptom;
 	this.diagnostic = diagnostic;
 	this.state = state;
@@ -25,6 +33,9 @@ public ClinicalHistory (String symptom, String diagnostic , boolean state, Strin
 	this.weightPet = weightPet;
 	this.typeOfPet = typeOfPet;
 	this.ageOfPet = ageOfPet;
+	admissionDate = new HistorialDate(day, month, year);
+	medicaments= new ArrayList<Medicament>();
+	owner= c;
 }
 
 public String getSymptom(){
