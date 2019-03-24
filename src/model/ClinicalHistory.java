@@ -11,7 +11,7 @@ public final static String STATE_CLOSE= "cerrado";
 //attributes
 private String symptom;
 private String diagnostic;
-private boolean state;
+private String state;
 private String race;
 private String namePet;
 private double weightPet;
@@ -24,7 +24,7 @@ private ArrayList<Medicament> medicaments;
 private Client owner;
 
 
-public ClinicalHistory (String symptom, String diagnostic , boolean state, String race, String namePet,double weightPet , String typeOfPet, int ageOfPet, int day, int month, int year, Client c){
+public ClinicalHistory (String symptom, String diagnostic , String state, String race, String namePet,double weightPet , String typeOfPet, int ageOfPet, int day, int month, int year, Client c){
 	this.symptom = symptom;
 	this.diagnostic = diagnostic;
 	this.state = state;
@@ -50,12 +50,10 @@ public String getDiagnostic(){
 public void  setDiagnostic(String diagnostic ){
 	this.diagnostic=diagnostic;
 }
-public boolean getState(){
+public String getState(){
 	return state;
 }
-public void setDiagnostic(boolean state){
-	this.state=state;
-}
+
 public String getRace(){
 	return race;
 }
@@ -86,6 +84,23 @@ public int getAgeOfPet(){
 }
 public void setAgeOfPet(int ageOfPet){
 	this.ageOfPet=ageOfPet;
+}
+
+public void addMedicament(String name, double dose, double doseCost, int frecuency) {
+	Medicament m= new Medicament(name, dose, doseCost, frecuency);
+	medicaments.add(m);
+}
+
+
+	
+	for(int i=0;i<medicaments.size();i++) {
+		double howManyTimesItHasBeenApplied=24/medicaments.get(i).getFrecuency();
+		double costPerDay= howManyTimesItHasBeenApplied*medicaments.get(i).getDoseCost();
+		double totalCost=costPerDay*days;
+		cost+=totalCost;
+	}
+	
+	return cost;
 }
 
 }

@@ -29,6 +29,9 @@ this.typeOfPet =typeOfPet;
 this.ageOfPet = ageOfPet;
 histories= new ArrayList<ClinicalHistory>();
 }
+public void addClinicalHistory(ClinicalHistory c) {
+	histories.add(c);
+}
 public String getNamePet(){
 	return namePet;
 }

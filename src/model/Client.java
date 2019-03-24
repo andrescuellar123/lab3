@@ -46,6 +46,17 @@ public void addPet(Pet p) {
 	pets.add(p);
 }
 
+public Pet findPet(String name) {
+	Pet found=null;
+	for(int i=0;i<pets.size();i++) {
+		if(pets.get(i).getNamePet().equals(name)) {
+			found= pets.get(i);
+		}
+	}
+	return found;
+	
+}
+
 
 
 

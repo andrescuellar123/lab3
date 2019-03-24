@@ -19,6 +19,14 @@ public void setAvailable(boolean available){
 	this.available=available;
 }
 
+public void setHistoryAsociated(ClinicalHistory c) {
+	historyAsociated=c;
+}
+
+public ClinicalHistory getClinicalHistory() {
+	return historyAsociated;
+}
+
 
 
 
