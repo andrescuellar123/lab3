@@ -91,9 +91,65 @@ public void addMedicament(String name, double dose, double doseCost, int frecuen
 	medicaments.add(m);
 }
 
+public int countDays(int endDay, int endMonth, int endYear) {
+	int dif = 0; 
+	admissionDate.get(day)- (int endDay);
+}
+	return dif; //revisar
+  }
+
+	public double calculateCost(int endDay, int endMonth, int endYear) {
+	int days= countDays(endDay, endMonth, endYear);
+	double cost=0;
+	if(typeOfPet.equals(Pet.CAT)) {
+		if(weightPet>=1&& weightPet<=3) {
+			cost= 10000;
+		}else if( weightPet>=3.1 && weightPet>=10) {
+			cost= 12000;
+		}else if (weightPet>= 10.1 && weightPet <= 20){
+			cost= 15000;
+		}else if (weightPet > 20){
+			cost= 20000;
+		}
+	}else if( typeOfPet.equals(Pet.DOG)) {
+		if(weightPet>=1&& weightPet<=3) {
+			cost= 15000;
+		}else if( weightPet>=3.1 && weightPet>=10) {
+			cost= 17000;
+		}else if (weightPet>= 10.1 && weightPet <= 20){
+			cost= 20000;
+		}else if (weightPet > 20){
+			cost= 25000;
+		}
+		
+	}else if( typeOfPet.equals(Pet.Bird)) {
+		if(weightPet>=1&& weightPet<=3) {
+			cost= 10000;
+		}else if( weightPet>=3.1 && weightPet>=10) {
+			cost= 12000;
+		}else if (weightPet>= 10.1 && weightPet <= 20){
+			cost= 20000;
+		}else if (weightPet > 20){
+			cost= 25000;
+		}
+		
+	}else if( typeOfPet.equals(Pet.OTHER)) {
+		if(weightPet>=1&& weightPet<=3) {
+			cost= 10000;
+		}else if( weightPet>=3.1 && weightPet>=10) {
+			cost= 17000;
+		}else if (weightPet>= 10.1 && weightPet <= 20){
+			cost= 30000;
+		}else if (weightPet > 20){
+			cost= 33000;
+		}
 
 	
-	for(int i=0;i<medicaments.size();i++) {
+		return cost;
+	}
+	
+	
+		for(int i=0;i<medicaments.size();i++) {
 		double howManyTimesItHasBeenApplied=24/medicaments.get(i).getFrecuency();
 		double costPerDay= howManyTimesItHasBeenApplied*medicaments.get(i).getDoseCost();
 		double totalCost=costPerDay*days;
@@ -101,6 +157,16 @@ public void addMedicament(String name, double dose, double doseCost, int frecuen
 	}
 	
 	return cost;
-}
+
 
 }
+
+
+
+
+
+
+
+
+
+	

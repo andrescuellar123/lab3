@@ -109,4 +109,48 @@ public void addPetToAClient(String identityOfClient, String namePet, double weig
 	target.addPet(p);
 	
 }
+
+	public String positionRoomWithName(String namePet) {
+	Pet position = null;
+	for(int i=0;i<rooms.lenght();i++) {
+		if(rooms.get(i).getHistoryAsociated().getName().equals(namePet)) {
+			position= rooms.get(i);
+		}
+	}
+	return "name: "+position.getNamePet()+" room: "+position.rooms();
+	
 }
+
+public String D_Alta(String positionRoomWithName() ){
+	
+
+	
+	if (String positionRoomWithName() != null){
+		setHistoryAsociated = null;
+		setAvailable(true);
+		
+	}
+	
+}
+ClinicalHistory h= new ClinicalHistory(symptom, diagnostic, ClinicalHistory.STATE_OPEN, race, namePet, weightPet, typeOfPet, ageOfPet, day, month, year, target);
+	int posOfRoom= thereIsARoomAvaible();
+	boolean added=false;
+	if(posOfRoom!=-1) {
+		added=true;
+		Room r= rooms[posOfRoom];
+		r.setAvailable(false);
+		r.setHistoryAsociated(h);
+		histories.add(h);
+		target.findPet(namePet).addClinicalHistory(h);
+	}
+	return added;
+
+
+
+}
+
+
+
+
+
+
