@@ -1,6 +1,11 @@
 package model;
 
+import java.sql.Date;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
+
+import javax.print.attribute.standard.DateTimeAtCompleted;
 
 public class ClinicalHistory{
 	
@@ -18,8 +23,10 @@ private double weightPet;
 private String typeOfPet;
 private int ageOfPet;
 
+
 //Relations
 private HistorialDate admissionDate;
+private HistorialDate altaDate;
 private ArrayList<Medicament> medicaments;
 private Client owner;
 
@@ -37,7 +44,9 @@ public ClinicalHistory (String symptom, String diagnostic , String state, String
 	medicaments= new ArrayList<Medicament>();
 	owner= c;
 }
-
+public void setState(String s) {
+	state= s;
+}
 public String getSymptom(){
 	return symptom;
 }
@@ -61,7 +70,7 @@ public void setRace(String race){
 	this.race=race;
 }
 public String getNamePet(){
-	return namePet= namePet;
+	return namePet;
 }
 public void setNamePet(String namePet){
 	this.namePet=namePet;
@@ -80,7 +89,7 @@ public void setTypeOfPet(String typeOfPet){
 }
 public int getAgeOfPet(){
 	return ageOfPet;
-	
+
 }
 public void setAgeOfPet(int ageOfPet){
 	this.ageOfPet=ageOfPet;
@@ -92,13 +101,18 @@ public void addMedicament(String name, double dose, double doseCost, int frecuen
 }
 
 public int countDays(int endDay, int endMonth, int endYear) {
-	int dif = 0; 
-	admissionDate.get(day)- (int endDay);
+	GregorianCalendar fin= new GregorianCalendar(endYear, endMonth, endDay);
+	GregorianCalendar ini= new GregorianCalendar(admissionDate.getYear(),admissionDate.getMonth(),admissionDate.getDay());
+	int cont=0;
+	while(fin.compareTo(ini)!=0) {
+		ini.add(GregorianCalendar.DAY_OF_MONTH, 1);
+		cont++;
+	}
+	return cont;
 }
-	return dif; //revisar
-  }
 
-	public double calculateCost(int endDay, int endMonth, int endYear) {
+
+public double calculateCost(int endDay, int endMonth, int endYear) {
 	int days= countDays(endDay, endMonth, endYear);
 	double cost=0;
 	if(typeOfPet.equals(Pet.CAT)) {
@@ -121,8 +135,8 @@ public int countDays(int endDay, int endMonth, int endYear) {
 		}else if (weightPet > 20){
 			cost= 25000;
 		}
-		
-	}else if( typeOfPet.equals(Pet.Bird)) {
+
+	}else if( typeOfPet.equals(Pet.BIRD)) {
 		if(weightPet>=1&& weightPet<=3) {
 			cost= 10000;
 		}else if( weightPet>=3.1 && weightPet>=10) {
@@ -132,7 +146,7 @@ public int countDays(int endDay, int endMonth, int endYear) {
 		}else if (weightPet > 20){
 			cost= 25000;
 		}
-		
+
 	}else if( typeOfPet.equals(Pet.OTHER)) {
 		if(weightPet>=1&& weightPet<=3) {
 			cost= 10000;
@@ -144,22 +158,24 @@ public int countDays(int endDay, int endMonth, int endYear) {
 			cost= 33000;
 		}
 
-	
+
 		return cost;
 	}
-	
-	
-		for(int i=0;i<medicaments.size();i++) {
+
+
+	for(int i=0;i<medicaments.size();i++) {
 		double howManyTimesItHasBeenApplied=24/medicaments.get(i).getFrecuency();
 		double costPerDay= howManyTimesItHasBeenApplied*medicaments.get(i).getDoseCost();
 		double totalCost=costPerDay*days;
 		cost+=totalCost;
 	}
-	
+
 	return cost;
 
 
 }
+}
+
 
 
 

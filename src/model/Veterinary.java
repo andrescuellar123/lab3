@@ -56,7 +56,7 @@ public String getDataOfAClientByHisName(String name) {
 		}
 	}
 	return "name: "+target.getName()+" Identity: "+target.getIdentity()+" Address: "+target.getAddress();
-	
+
 }
 
 public String getDataOfAClientByTheNameOfHisPet(String name) {
@@ -107,43 +107,39 @@ public void addPetToAClient(String identityOfClient, String namePet, double weig
 		}
 	}
 	target.addPet(p);
-	
+
 }
 
-	public String positionRoomWithName(String namePet) {
-	Pet position = null;
-	for(int i=0;i<rooms.lenght();i++) {
-		if(rooms.get(i).getHistoryAsociated().getName().equals(namePet)) {
-			position= rooms.get(i);
+public int positionRoomWithName(String namePet) {
+	int position = -1;
+	for(int i=0;i<rooms.length&& position==-1;i++) {
+		if(rooms[i].getClinicalHistory().getNamePet().equals(namePet)) {
+			position = i;
 		}
 	}
-	return "name: "+position.getNamePet()+" room: "+position.rooms();
-	
+
+	return position;	
 }
 
-public String D_Alta(String positionRoomWithName() ){
-	
+public String D_Alta(String namePet){
+	int pos = positionRoomWithName(namePet);
+	Room r= rooms[pos];
+	ClinicalHistory hist= r.getClinicalHistory();
+	hist.setState(ClinicalHistory.STATE_CLOSE);
+	r.setHistoryAsociated(null);
+	r.setAvailable(true);
+//	diagnostic;
+//	private String state;
+//	private String race;
+//	private String namePet;
+//	private double weightPet;
+//	private String typeOfPet;
+//	private int ageOfPet;
+	//TODO terminar de retornar todos los datos
+	return "Diagnostic: "+ hist.getDiagnostic()+ " Race: "+ hist.getRace() + " Name Pet: "+hist.getNamePet();
 
-	
-	if (String positionRoomWithName() != null){
-		setHistoryAsociated = null;
-		setAvailable(true);
-		
-	}
-	
 }
-ClinicalHistory h= new ClinicalHistory(symptom, diagnostic, ClinicalHistory.STATE_OPEN, race, namePet, weightPet, typeOfPet, ageOfPet, day, month, year, target);
-	int posOfRoom= thereIsARoomAvaible();
-	boolean added=false;
-	if(posOfRoom!=-1) {
-		added=true;
-		Room r= rooms[posOfRoom];
-		r.setAvailable(false);
-		r.setHistoryAsociated(h);
-		histories.add(h);
-		target.findPet(namePet).addClinicalHistory(h);
-	}
-	return added;
+
 
 
 
