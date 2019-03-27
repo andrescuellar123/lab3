@@ -128,15 +128,8 @@ public String D_Alta(String namePet){
 	hist.setState(ClinicalHistory.STATE_CLOSE);
 	r.setHistoryAsociated(null);
 	r.setAvailable(true);
-//	diagnostic;
-//	private String state;
-//	private String race;
-//	private String namePet;
-//	private double weightPet;
-//	private String typeOfPet;
-//	private int ageOfPet;
-	//TODO terminar de retornar todos los datos
-	return "Diagnostic: "+ hist.getDiagnostic()+ " Race: "+ hist.getRace() + " Name Pet: "+hist.getNamePet();
+
+	return "Diagnostic: "+ hist.getDiagnostic()+ " Race: "+ hist.getRace() + " Name Pet: "+hist.getNamePet()+ "weight pet:" + hist.getWeightPet +"type Of Pet: " + hist.getTypeOfPet + "age of pet: " + hist.getAgeOfPet ;
 
 }
 
