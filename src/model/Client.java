@@ -19,7 +19,7 @@ this.name = name;
 this.identity = identity;
 this.address = address;
 this.cellphone = cellphone;
-this.pets= new ArrayList<>();
+this.pets= new ArrayList<Pet>();
 }
 public String getName(){
     return name;
@@ -56,9 +56,29 @@ public Pet findPet(String name) {
 	return found;
 	
 }
+//information of the client
 
+ public String showInfoClient(){
+ String msj = "";
+ msj += "---------------------------------------------------------------------------------------------------------------------------- \n";
+ msj += "El nombre es:" + name + "\n";
+ msj += "---------------------------------------------------------------------------------------------------------------------------- \n";
+ msj += "La edad es:" + identity + "\n";
+ msj += "---------------------------------------------------------------------------------------------------------------------------- \n";
+ msj += "El peso es:" + address + "\n";
+ msj += "---------------------------------------------------------------------------------------------------------------------------- \n";
+ msj +="El tipo de mascota es:" + cellphone + "\n";
+ msj += "---------------------------------------------------------------------------------------------------------------------------- \n";
+ 
+ for(int o = 0; 0 < pets.size(); o++){
+	
+	msj += pets.get(o).showInfoPet();
+	 
+	 
+ }
+	return msj;
 
-
+}
 
 
 

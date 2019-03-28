@@ -129,7 +129,7 @@ public String D_Alta(String namePet){
 	r.setHistoryAsociated(null);
 	r.setAvailable(true);
 
-	return "Diagnostic: "+ hist.getDiagnostic()+ " Race: "+ hist.getRace() + " Name Pet: "+hist.getNamePet()+ "weight pet:" + hist.getWeightPet +"type Of Pet: " + hist.getTypeOfPet + "age of pet: " + hist.getAgeOfPet ;
+	return "Diagnostic: "+ hist.getDiagnostic()+ " Race: "+ hist.getRace() + " Name Pet: "+hist.getNamePet()+ "weight pet:" + hist.getWeightPet() +"type Of Pet: " + hist.getTypeOfPet() + "age of pet: " + hist.getAgeOfPet() ;
 
 }
 
