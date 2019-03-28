@@ -10,6 +10,7 @@ public class Main{
  private Veterinary vet;
  private Client cli;
  private Pet pe;
+ private Medicament me;
  
  public void init(){
 	 
@@ -95,14 +96,14 @@ public void showMenu(){
    
    Pet pet = new Pet(namePet, ageOfPet, animal, weightOfPet);
    clientsPets.add(pet);
-   principal.addClient(client,clientsPets);
+   vet.addClient(client,clientsPets);
    System.out.println("Se ha añadido la mascota con exito");
    
 	  }
 	  }	  
    else if( userImput ==2){
 
-   System.out.println(principal.showClinicalHistories());
+   System.out.println(vet.showClinicalHistories());
    }
    else if(userImput == 3){
 
@@ -163,20 +164,20 @@ public void showMenu(){
       reader.nextLine();
 
 
-      Pet pets = principal.findPett(nameClie, idClie, namePe);
+      Pet pets = vet.findPett(nameClie, idClie, namePe);
 
       ClinicalHistory newClinicalHistory = new ClinicalHistory( nameClie, namePe , symp, diag, stat, dateIn, pets);
 
       Medicament medicament = new Medicament(medi, dos, totaldos, frec);
 
-      principal.hospitalizeVet(nameClie, idClie, namePe, newClinicalHistory, medicament);
+      vet.hospitalizeVet(nameClie, idClie, namePe, newClinicalHistory, medicament);
 
-	  System.out.println(principal.hospitalize(clientId, petName));
+	  System.out.println(vet.hospitalize(clientId, petName));
 
   }
   else if(userImput ==4){
 
-    System.out.println(principal.ShowMedicamentInformation()); 
+    System.out.println(vet.ShowMedicamentInformation()); 
   }
   else if(userImput ==5){
      System.out.println("Cual es el dia actual?");
@@ -191,13 +192,13 @@ public void showMenu(){
      int actualYear = reader.nextInt();
      reader.nextLine();
 
-     principal.calculatedPay(actualDay, actualMonth, actualYear);
-     System.out.println(principal.calculatedPay(actualDay, actualMonth, actualYear));
+     vet.calculatedPay(actualDay, actualMonth, actualYear);
+     System.out.println(vet.calculatedPay(actualDay, actualMonth, actualYear));
 
 
   }
   else if(userImput ==6){
-    System.out.println(principal.showClients());
+    System.out.println(vet.showClients());
 
     System.out.println("Por favor digite la identificacion del usuario para dar de alto a su animal");
     String idClientt = reader.nextLong();
@@ -206,7 +207,7 @@ public void showMenu(){
     System.out.println(" digite el nombre de su mascota para darle de alta");
     String nampe = reader.nextLine();
 
-    System.out.println(principal.findToHospitalize(idClientt,nampe));
+    System.out.println(vet.findToHospitalize(idClientt,nampe));
   }
   else{
 	  
