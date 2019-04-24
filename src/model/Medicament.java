@@ -40,6 +40,12 @@ public int getFrecuency(){
 public void setrFrecuency(int frecuency){
 	this.frecuency=frecuency;
 }
+
+//new medicament deberia ir en el main?
+
+
+
+
 // medicament information
 
 public String ShowMedicamentInformation(){

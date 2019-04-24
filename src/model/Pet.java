@@ -57,6 +57,23 @@ public void setAgeOfPet(int ageOfPet){
 	this.ageOfPet = ageOfPet;
 }
 
+//Pet imc
+
+public  double calculatePetIMC(){
+  double imc11 = 0;
+  double imc22 = 0;
+
+  imc11 +=getWeight();
+  imc22 +=getHeight();
+
+
+ imc = imc11 / (imc22 * imc22);
+
+  return imc;
+}
+
+
+
 	//Show information about pet
 	
  public String showInfoPet(){

@@ -99,6 +99,11 @@ public void addMedicament(String name, double dose, double doseCost, int frecuen
 	Medicament m= new Medicament(name, dose, doseCost, frecuency);
 	medicaments.add(m);
 }
+//nuevo medicamento
+public void addMedicament2(String name, double dose, double doseCost, int frecuency) {
+	Medicament p= new Medicament(name, dose, doseCost, frecuency);
+	medicaments.add(p);
+}
 
 public int countDays(int endDay, int endMonth, int endYear) {
 	GregorianCalendar fin= new GregorianCalendar(endYear, endMonth, endDay);
@@ -174,6 +179,27 @@ public double calculateCost(int endDay, int endMonth, int endYear) {
 
 
 }
+//nuevo servicio
+  calculateCostService(){
+	  String service = "";
+	  double cost=0;
+	  if(service == banio){
+		  cost = 20000;
+	  }
+	  else if(service == banio_dom){
+		  cost = 30000;
+	  }
+	  else if(service == unias){
+		  cost = 8000;
+	  }
+	  else if (service == dental){
+		  cost = 12000;
+	  }
+	  else if (service == vacunas ){
+		  cost = 45000;
+	  }
+	  return cost;
+  }
 }
 
 
