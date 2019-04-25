@@ -17,17 +17,20 @@ private String namePet;
 private double weightPet;
 private String typeOfPet;
 private int ageOfPet;
+private double heightPet
 //Relations
 private ArrayList<ClinicalHistory> histories;
 
 //constructor
 
-public Pet (String namePet, double weightPet, String typeOfPet, int ageOfPet){
+public Pet (String namePet, double weightPet, String typeOfPet, int ageOfPet , double heightPet, double imc){
 this.namePet = namePet;
 this.weightPet = weightPet;
 this.typeOfPet =typeOfPet;
 this.ageOfPet = ageOfPet;
 histories= new ArrayList<ClinicalHistory>();
+this.heightPet = heightPet;
+this.imc= imc;
 }
 public void addClinicalHistory(ClinicalHistory c) {
 	histories.add(c);
@@ -56,6 +59,18 @@ public int getAgeOfPet(){
 public void setAgeOfPet(int ageOfPet){
 	this.ageOfPet = ageOfPet;
 }
+public double getHeightPet(){
+	return heightPet;
+}
+public void setHeightPet(double heightPet){
+	this.heightPet= heightPet;
+}
+public double getImc(){
+	return imc;
+}
+public void setImc(double imc){
+	this.imc = imc;
+}
 
 //Pet imc
 
@@ -63,8 +78,8 @@ public  double calculatePetIMC(){
   double imc11 = 0;
   double imc22 = 0;
 
-  imc11 +=getWeight();
-  imc22 +=getHeight();
+  imc11 +=getWeightPet();
+  imc22 +=getHeightPet();
 
 
  imc = imc11 / (imc22 * imc22);

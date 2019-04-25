@@ -132,6 +132,23 @@ public String D_Alta(String namePet){
 	return "Diagnostic: "+ hist.getDiagnostic()+ " Race: "+ hist.getRace() + " Name Pet: "+hist.getNamePet()+ "weight pet:" + hist.getWeightPet() +"type Of Pet: " + hist.getTypeOfPet() + "age of pet: " + hist.getAgeOfPet() ;
 
 }
+//nuevo info
+public void updateBasicInformation( String identity, String nAddress, String nPhone){
+	
+	for(int i = 0; i < clients.size() ; i++ ){
+		if(clients.get(i).getIdentity().equals(identity)){
+				Client toModify = clients.get(i);
+				if(nAddress!= null &&!nAddress.equals("")){
+					toModify.setAddress(nAddress);
+				}
+				if(nPhone != null && !nPhone.equals("")){
+					toModify.setCellphone(nPhone);
+				}
+				
+			
+		}
+	}
+}
 
 
 

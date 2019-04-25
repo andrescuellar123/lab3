@@ -39,6 +39,12 @@ public String getAddress(){
 public void setAddress(String address){
 	this.address = address;
 }
+public String getCellphone(){
+	return cellphone;
+}
+public void setCellphone(String cellphone){
+	this.cellphone=cellphone;
+}
 public ArrayList<Pet> getPets(){
 	return pets;
 }
