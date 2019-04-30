@@ -12,6 +12,11 @@ public class ClinicalHistory{
 //constants
 public final static String STATE_OPEN = "abierto";
 public final static String STATE_CLOSE= "cerrado";	
+public final static String BANIO= "banio";
+public final static String BANIO_DOM = "banio_dom";
+public final static String UNIAS = "unias";
+public final static String DENTAL= "dental";
+public final static String VACUNA = "vacuna";
 
 //attributes
 private String symptom;
@@ -22,6 +27,7 @@ private String namePet;
 private double weightPet;
 private String typeOfPet;
 private int ageOfPet;
+private String service;
 
 
 //Relations
@@ -31,7 +37,7 @@ private ArrayList<Medicament> medicaments;
 private Client owner;
 
 
-public ClinicalHistory (String symptom, String diagnostic , String state, String race, String namePet,double weightPet , String typeOfPet, int ageOfPet, int day, int month, int year, Client c){
+public ClinicalHistory (String symptom, String diagnostic , String state, String race, String namePet,double weightPet , String typeOfPet, int ageOfPet, int day, int month, int year, Client c , String service){
 	this.symptom = symptom;
 	this.diagnostic = diagnostic;
 	this.state = state;
@@ -43,6 +49,7 @@ public ClinicalHistory (String symptom, String diagnostic , String state, String
 	admissionDate = new HistorialDate(day, month, year);
 	medicaments= new ArrayList<Medicament>();
 	owner= c;
+	this.service = service;
 }
 public void setState(String s) {
 	state= s;
@@ -94,7 +101,12 @@ public int getAgeOfPet(){
 public void setAgeOfPet(int ageOfPet){
 	this.ageOfPet=ageOfPet;
 }
-
+public String getService(){
+	return service;
+}
+public voidsetService(String service){
+	this.service=service;
+}
 //añadir nuevo medicamento
 public String addMedicament(String name, double dose, String doseCost, String frecuency) {
 	boolean error=false;
@@ -193,6 +205,31 @@ public double calculateCost(int endDay, int endMonth, int endYear) {
 	return cost;
 
 
+}
+
+//nuevas notas un String?
+
+
+//nuevo servicio
+
+calculateCostService(){
+	double cost = 0;
+	if(service.equals(banio)){
+		cost = 20000;	
+	}
+		else if(service.equal(banio_dom)){
+		cost= 30000;
+	}
+	else if(service.equals(unias)){
+		cost= 8000;
+	}
+	else if(service.equals(dental)){
+		cost = 12000;
+	}
+	else if(service.equals(vacuna)){
+		cost = 45000;
+	}
+	return cost;
 }
 
 }
