@@ -10,13 +10,10 @@ import javax.print.attribute.standard.DateTimeAtCompleted;
 public class ClinicalHistory{
 	
 //constants
-public final static String STATE_OPEN = "abierto";
-public final static String STATE_CLOSE= "cerrado";	
-public final static String BANIO= "banio";
-public final static String BANIO_DOM = "banio_dom";
-public final static String UNIAS = "unias";
-public final static String DENTAL= "dental";
-public final static String VACUNA = "vacuna";
+public final static String STATE_OPEN  = "abierto";
+public final static String STATE_CLOSE = "cerrado";	
+public final static String BANIO       = "banio";
+
 
 //attributes
 private String symptom;
@@ -26,8 +23,8 @@ private String race;
 private String namePet;
 private double weightPet;
 private String typeOfPet;
-private int ageOfPet;
-private String service;
+private int    ageOfPet;
+
 
 
 //Relations
@@ -37,7 +34,7 @@ private ArrayList<Medicament> medicaments;
 private Client owner;
 
 
-public ClinicalHistory (String symptom, String diagnostic , String state, String race, String namePet,double weightPet , String typeOfPet, int ageOfPet, int day, int month, int year, Client c , String service){
+public ClinicalHistory (String symptom, String diagnostic , String state, String race, String namePet,double weightPet , String typeOfPet, int ageOfPet, int day, int month, int year, Client c ){
 	this.symptom = symptom;
 	this.diagnostic = diagnostic;
 	this.state = state;
@@ -49,7 +46,7 @@ public ClinicalHistory (String symptom, String diagnostic , String state, String
 	admissionDate = new HistorialDate(day, month, year);
 	medicaments= new ArrayList<Medicament>();
 	owner= c;
-	this.service = service;
+	
 }
 public void setState(String s) {
 	state= s;
@@ -212,12 +209,12 @@ public double calculateCost(int endDay, int endMonth, int endYear) {
 
 //nuevo servicio
 
-calculateCostService(){
+public double calculateCostService(){
 	double cost = 0;
 	if(service.equals(banio)){
 		cost = 20000;	
 	}
-		else if(service.equal(banio_dom)){
+	else if(service.equal(banio_dom)){
 		cost= 30000;
 	}
 	else if(service.equals(unias)){
@@ -231,6 +228,10 @@ calculateCostService(){
 	}
 	return cost;
 }
+
+
+
+
 
 }
 

@@ -40,8 +40,8 @@ public void showMenu(){
   System.out.println("***************************************************************************************************************************************************************");
   System.out.println("*****************************VETERINARY MI PEQUEÑA MASCOTA ****************************************************************************************************");
   System.out.println("*****************************1. Registrarse con la mascota    *************************************************************************************************");
-  System.out.println("*****************************2. informacion cliente   *********************************************************************************************************");
-  System.out.println("**************************** 3. infromacion de mascota  *******************************************************************************************************");
+  System.out.println("*****************************2. informacion cliente y mascota *************************************************************************************************");
+  System.out.println("**************************** 3. infromacion actual  ***********************************************************************************************************");
   System.out.println("*****************************4. informacion del medicamento   *************************************************************************************************");
   System.out.println("*****************************5. informacion de la historia clinica ********************************************************************************************");
   System.out.println("**************************** 6. ********************************************************************************************************");
@@ -49,7 +49,7 @@ public void showMenu(){
   System.out.println("**************************************************************************************************************************************************************");
   System.out.println("**************************************************************************************************************************************************************");
  
-  while(userInput != 7){
+  while(userInput != 5){
 	  if(userInput == 1){
 		  		  
    System.out.println("Cual es el nombre del cliente?");
@@ -76,12 +76,13 @@ public void showMenu(){
       for(int i = 0; i < numb ; i++){
    System.out.println("Cual es  el nombre de su mascota? ");
    String namePet = reader.nextLine();
+   
+     System.out.println("Cual es  el peso de su mascota? ");
 
-   System.out.println("Cual es  la edad de su mascota? ");
-   int ageOfPet = reader.nextInt();
+   double weightOfPet = reader.nextDouble();
    reader.nextLine();
-
-   System.out.println("Cual es  tipo de su mascota? ");
+   
+      System.out.println("Cual es  tipo de su mascota? ");
 
    System.out.println("Perro ");
    System.out.println("Gato ");
@@ -89,23 +90,28 @@ public void showMenu(){
    System.out.println("Otro ");
    String animal = reader.nextLine();
 
-   System.out.println("Cual es  el peso de su mascota? ");
-
-   double weightOfPet = reader.nextDouble();
+   System.out.println("Cual es  la edad de su mascota? ");
+   int ageOfPet = reader.nextInt();
    reader.nextLine();
+
+   System.out.println("Cual es  el alto de la mascota? ");
+   double heightPet = reader.nextDouble();
+   reader.nextDouble();
    
-   Pet pet = new Pet(namePet, ageOfPet, animal, weightOfPet);
+   
+   System.out.println("Cual es  el imc de la mascota? ");
+   double imc = reader.nextDouble();
+   reader.nextDouble();
+ 
+   
+   Pet pet = new Pet(String namePet, double weightPet, String typeOfPet, int ageOfPet , double heightPet, double imc);
    clientsPets.add(pet);
    vet.addClient(client,clientsPets);
    System.out.println("Se ha añadido la mascota con exito");
    
-	  }
+	}
 	  }	  
-   else if( userImput ==2){
-
-   System.out.println(vet.showClinicalHistories());
-   }
-   else if(userImput == 3){
+   else if(userImput == 2){
 
       System.out.println("Cual es el id del cliente?");
       long clientId = reader.nextLong();
@@ -175,11 +181,8 @@ public void showMenu(){
 	  System.out.println(vet.hospitalize(clientId, petName));
 
   }
-  else if(userImput ==4){
-
-    System.out.println(vet.ShowMedicamentInformation()); 
-  }
-  else if(userImput ==5){
+  
+  else if(userImput ==3){
      System.out.println("Cual es el dia actual?");
      int actualDay = reader.nextInt();
      reader.nextLine();
@@ -197,7 +200,7 @@ public void showMenu(){
 
 
   }
-  else if(userImput ==6){
+  else if(userImput ==4){
     System.out.println(vet.showClients());
 
     System.out.println("Por favor digite la identificacion del usuario para dar de alto a su animal");
@@ -216,4 +219,15 @@ public void showMenu(){
 	  }
 	 }
    }
+   
+  public void init(){
+	  
+	  Pet pet1 = new Pet("misifus",15.0,"C",10,1.5,15.0,"1234");
+	  Pet pet2 = new Pet("Rodolfo",16.0,"D",5,1.9,16.0,"1235");
+	  
+	  
+	  
+	 Client client1 = new Client("Pepe","1006098152","calle", 3308206);
+	 Client client2 = new Client("Carlos","1006098153","calle",3312678);
+  }
 }

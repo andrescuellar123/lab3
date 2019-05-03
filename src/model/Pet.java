@@ -17,20 +17,23 @@ private String namePet;
 private double weightPet;
 private String typeOfPet;
 private int ageOfPet;
-private double heightPet
+private double heightPet;
+private double imc;
+private String identity;
 //Relations
 private ArrayList<ClinicalHistory> histories;
 
 //constructor
 
-public Pet (String namePet, double weightPet, String typeOfPet, int ageOfPet , double heightPet, double imc){
+public Pet (String namePet, double weightPet, String typeOfPet, int ageOfPet , double heightPet, double imc, String identity){
 this.namePet = namePet;
 this.weightPet = weightPet;
 this.typeOfPet =typeOfPet;
 this.ageOfPet = ageOfPet;
 histories= new ArrayList<ClinicalHistory>();
 this.heightPet = heightPet;
-this.imc= imc;
+this.imc= imc
+this.identity = identity;
 }
 public void addClinicalHistory(ClinicalHistory c) {
 	histories.add(c);
@@ -71,6 +74,13 @@ public double getImc(){
 public void setImc(double imc){
 	this.imc = imc;
 }
+public String getIdentity(){
+	return identity;
+}
+public void setIdentity(String identity){
+	this.identity = identity;
+}
+
 
 //Pet imc
 

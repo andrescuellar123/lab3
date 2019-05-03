@@ -133,6 +133,15 @@ public String D_Alta(String namePet){
 
 }
 //nuevo info
+
+/**
+*Description This method allows to update the basic data of a veterinary client, these data include, address and phone number.
+*pre: The client was created before.
+*post: The address and /or phone number of the client is updated.
+*@Param The new address of the client. This param could be empty.
+*@Param The new phone number of the client. This param could be empty.
+*/
+
 public void updateBasicInformation( String identity, String nAddress, String nPhone){
 	
 	for(int i = 0; i < clients.size() ; i++ ){
