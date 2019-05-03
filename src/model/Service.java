@@ -6,6 +6,7 @@ import java.util.ArrayList;
 public class Service{
 	
 	//constants
+	public final static String BANIO       = "banio";
 	public final static String BANIO_DOM   = "banio_dom";
 	public final static String UNIAS       = "unias";
 	public final static String DENTAL      = "dental";
@@ -18,7 +19,7 @@ public class Service{
 	private String service;
 	
 	//relations
-	private ArrayList<Clients> cli;
+	private ArrayList<Client> cli;
 	private ArrayList<Pet> pt;
 	
 	//constructor 
@@ -44,7 +45,7 @@ public class Service{
 	public String getService(){
 	return service;
 	}
-	public voidsetService(String service){
+	public void setService(String service){
 	this.service=service;
 	}
 	
@@ -54,19 +55,19 @@ public class Service{
 
 public double calculateCostService(){
 	double cost = 0;
-	if(service.equals(banio)){
+	if(service.equals(BANIO)){
 		cost = 20000;	
 	}
-	else if(service.equal(banio_dom)){
+	else if(service.equals( BANIO_DOM)){
 		cost= 30000;
 	}
-	else if(service.equals(unias)){
+	else if(service.equals(UNIAS )){
 		cost= 8000;
 	}
-	else if(service.equals(dental)){
+	else if(service.equals(DENTAL)){
 		cost = 12000;
 	}
-	else if(service.equals(vacuna)){
+	else if(service.equals(VACUNA)){
 		cost = 45000;
 	}
 	return cost;
@@ -75,12 +76,5 @@ public double calculateCostService(){
 
 //dias 
 
-//servicio con id
-public void clientIdWithServiceAndPetId(){
-	for(int i = 0 ; i < clients.size() && pets.size() ; i++ ){
-		if(clients.get(i).getName().getIdentity.equals(getIdentity)){
-			
-		}
-	}
-}
+
 }

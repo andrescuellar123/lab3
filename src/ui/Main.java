@@ -1,6 +1,6 @@
 package ui;
 
-import modelo.*;
+import model.*;
 import java.util.Scanner;
 import java.util.ArrayList;
 
@@ -15,10 +15,17 @@ public class Main{
  public void init(){
 	 
 	 vet = new Veterinary("Mi pequenia mascota");
+	 
+	   Pet pet1 = new Pet("misifus",15.0,"C",10,1.5,15.0,"1234");
+	  Pet pet2 = new Pet("Rodolfo",16.0,"D",5,1.9,16.0,"1235");
+	  
+	  
+	  
+	 Client client1 = new Client("Pepe","1006098152","calle", 3308206);
+	 Client client2 = new Client("Carlos","1006098153","calle",3312678);
  }
  public Main() {
 
-  init();
   reader = new Scanner(System.in);
 
 }
@@ -104,7 +111,7 @@ public void showMenu(){
    reader.nextDouble();
  
    
-   Pet pet = new Pet(String namePet, double weightPet, String typeOfPet, int ageOfPet , double heightPet, double imc);
+   Pet pet = new Pet( namePet, weightPet,  typeOfPet, ageOfPet , heightPet, imc,  identity);
    clientsPets.add(pet);
    vet.addClient(client,clientsPets);
    System.out.println("Se ha añadido la mascota con exito");
@@ -220,14 +227,8 @@ public void showMenu(){
 	 }
    }
    
-  public void init(){
+ 
 	  
-	  Pet pet1 = new Pet("misifus",15.0,"C",10,1.5,15.0,"1234");
-	  Pet pet2 = new Pet("Rodolfo",16.0,"D",5,1.9,16.0,"1235");
-	  
-	  
-	  
-	 Client client1 = new Client("Pepe","1006098152","calle", 3308206);
-	 Client client2 = new Client("Carlos","1006098153","calle",3312678);
-  }
+	
+  
 }

@@ -4,7 +4,6 @@ import java.sql.Date;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
-
 import javax.print.attribute.standard.DateTimeAtCompleted;
 
 public class ClinicalHistory{
@@ -98,13 +97,19 @@ public int getAgeOfPet(){
 public void setAgeOfPet(int ageOfPet){
 	this.ageOfPet=ageOfPet;
 }
-public String getService(){
-	return service;
-}
-public voidsetService(String service){
-	this.service=service;
-}
+
 //añadir nuevo medicamento
+/**
+*Description This method allows to add new medicines that were prescription during the hospitalization at the patient stories.
+*pre: The patient clinic story must be not null.
+*post: New medicines were added to the patient clinic story.
+*@param The medicine name. This param must be not null.
+*@param The medicine dose, this param refers to the amount of medicine supplied to the pet each time according the frequence assigned.
+*@param The medicine cost by each dose. This param could be empty.
+*@param The frequency of medicine application. This param could be empty.
+*@return A message that indiques if medicine was added to the patient clinic story
+*/
+
 public String addMedicament(String name, double dose, String doseCost, String frecuency) {
 	boolean error=false;
 	String message="";
@@ -206,28 +211,6 @@ public double calculateCost(int endDay, int endMonth, int endYear) {
 
 //nuevas notas un String?
 
-
-//nuevo servicio
-
-public double calculateCostService(){
-	double cost = 0;
-	if(service.equals(banio)){
-		cost = 20000;	
-	}
-	else if(service.equal(banio_dom)){
-		cost= 30000;
-	}
-	else if(service.equals(unias)){
-		cost= 8000;
-	}
-	else if(service.equals(dental)){
-		cost = 12000;
-	}
-	else if(service.equals(vacuna)){
-		cost = 45000;
-	}
-	return cost;
-}
 
 
 

@@ -98,8 +98,8 @@ public boolean hospitilizeAPet(String symptom, String diagnostic , String race, 
 	}
 	return added;
 }
-public void addPetToAClient(String identityOfClient, String namePet, double weightPet, String typeOfPet, int ageOfPet) {
-	Pet p= new Pet(namePet, weightPet, typeOfPet, ageOfPet);
+public void addPetToAClient(String identityOfClient, String namePet, double weightPet, String typeOfPet, int ageOfPet , double heightPet, double imc, String identity) {
+	Pet p= new Pet(namePet, weightPet,  typeOfPet, ageOfPet , heightPet, imc,  identity);
 	Client target= null;
 	for(int i=0;i<clients.size();i++) {
 		if(clients.get(i).getIdentity().equals(identityOfClient)) {

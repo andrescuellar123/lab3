@@ -32,7 +32,7 @@ this.typeOfPet =typeOfPet;
 this.ageOfPet = ageOfPet;
 histories= new ArrayList<ClinicalHistory>();
 this.heightPet = heightPet;
-this.imc= imc
+this.imc= imc;
 this.identity = identity;
 }
 public void addClinicalHistory(ClinicalHistory c) {
@@ -99,28 +99,6 @@ public  double calculatePetIMC(){
 
 
 
-	//Show information about pet
-	
- public String showInfoPet(){
- String msj = "";
- msj += "---------------------------------------------------------------------------------------------------------------------------- \n";
- msj += "El nombre es:" + namePet + "\n";
- msj += "---------------------------------------------------------------------------------------------------------------------------- \n";
- msj += "La edad es:" + ageOfPet + "\n";
- msj += "---------------------------------------------------------------------------------------------------------------------------- \n";
- msj += "El peso es:" + weightPet + "\n";
- msj += "---------------------------------------------------------------------------------------------------------------------------- \n";
- msj +="El tipo de mascota es:" + typeOfPet + "\n";
- msj += "---------------------------------------------------------------------------------------------------------------------------- \n";
-	return msj;
-
 }
 
 
-
-
-
-
-
-
-}
