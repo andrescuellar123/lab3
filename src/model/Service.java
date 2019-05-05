@@ -138,8 +138,8 @@ public void setPetTypeOfService(Pet petTypeOfService){
 }
 
 /**
-*Description este metodo obtiene la informacion del servicio
-*@return String la info del servicio
+*Description este metodo genera un reporte de la informacion de los servicios
+*@return String reporte de los servicios
 */
 public String reportInformation(){
 String msj = "";

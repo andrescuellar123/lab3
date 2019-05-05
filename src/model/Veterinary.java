@@ -187,6 +187,8 @@ public void addPetToAClient(String identityOfClient, String namePet, double weig
 	target.addPet(p);
 
 }
+
+
 /**
 *Description este metodo posicion del cuarto con el nombre
 *@param namePet String el nombre de la mascota
@@ -251,7 +253,7 @@ public void updateBasicInformation( String identity, String nAddress, String nPh
 
 /**
 *Description esste metodo genera un reporte acerca de la informacion que se encuentre en esas fechas
-*pre: la fecha se debe digitar  asi AAAA-MM-DD
+*pre: la fecha se debe digitar de esta forma: anio/mes/dia 
 *@param admissionDate String la fecha de ingreso
 *@param DepartureDate String la fecha salida
 *@return String el tipo de servicio que se le hizo a la mascota
@@ -302,7 +304,7 @@ return i;
 *post: el costo del servicio 1
 *@return double el costo del servicio
 */
-public double calculatedService1(){
+public double costService1(){
   double m = 0.0;
 
 for(int i = 0; i < serviceVet.size(); i++){
@@ -347,7 +349,7 @@ return i;
 *@return double el costo del servicio
 */
 
-public double calculatedService2(){
+public double costService2(){
   double m = 0.0;
 
 for(int i = 0; i < serviceVet.size(); i++){
@@ -392,7 +394,7 @@ return i;
 *@return double el costo del servicio
 */
 
-public double calculatedService3(){
+public double costService3(){
   double m = 0.0;
 
 for(int i = 0; i < serviceVet.size(); i++){
@@ -435,7 +437,7 @@ return i;
 *@return double el costo del servicio
 */
 
-public double calculatedService4(){
+public double costService4(){
   double m = 0.0;
 
 for(int i = 0; i < serviceVet.size(); i++){
@@ -478,7 +480,7 @@ return i;
 *@return double el costo del servicio
 */
 
-public double calculatedService5(){
+public double costService5(){
   double m = 0.0;
 
 for(int i = 0; i < serviceVet.size(); i++){
@@ -499,7 +501,7 @@ return m;
 public double calculateTotalService(){
 double h = 0.0;
 
-h += (calculatedService1() + calculatedService2() + calculatedService3() + calculatedService4() + calculatedService5());
+h += (costService1() + costService2() + costService3() + costService4() + costService5());
 
 return h;
 
@@ -513,7 +515,7 @@ return h;
 public double promeOfTheServices(){
 double prom = 0.0;
 
-prom += (calculatedService1() + calculatedService2() + calculatedService3() + calculatedService4() + calculatedService5())/( calculateappearences1()+ calculateappearences2()+ calculateappearences3()+ calculateappearences4()+ calculateappearences5());
+prom += (costService1() + costService2() + costService3() + costService4() + costService5())/( calculateappearences1()+ calculateappearences2()+ calculateappearences3()+ calculateappearences4()+ calculateappearences5());
 
 return prom;
 

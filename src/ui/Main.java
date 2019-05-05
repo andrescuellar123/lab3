@@ -11,21 +11,10 @@ public class Main{
  private Client cli;
  private Pet pe;
  private Medicament me;
- 
- public void init(){
-	 
-	 vet = new Veterinary("Mi pequenia mascota");
-		
-	   Pet pet1 = new Pet("misifus",15.0,"C",10,1.5,"1234");
-	  Pet pet2 = new Pet("Rodolfo",16.0,"D",5,1.9,"1235");
-	  
-	  
-	  
-	 Client client1 = new Client("Pepe","1006098152","calle", "3308206");
-	 Client client2 = new Client("Carlos","1006098153","calle","3312678");
- }
- public Main() {
+ private Service ser;
 
+ public Main() {
+  init();
   reader = new Scanner(System.in);
 
 }
@@ -33,7 +22,6 @@ public class Main{
 public static void main(String[] args) {
 
 Main m = new Main();
-m.init();
 m.showMenu();
 
 }
@@ -48,15 +36,18 @@ public void showMenu(){
   System.out.println("*****************************VETERINARY MI PEQUEÑA MASCOTA ****************************************************************************************************");
   System.out.println("*****************************1. Registrarse con la mascota ****************************************************************************************************");
   System.out.println("*****************************2. hospitalizar la mascota    ****************************************************************************************************");
-  System.out.println("**************************** 3. infromacion actual  ***********************************************************************************************************");
-  System.out.println("*****************************4. dar D alta   ******************************************************************************************************************");
-  System.out.println("*****************************5. informacion de la historia clinica ********************************************************************************************");
-  System.out.println("**************************** 6. ********************************************************************************************************");
-  System.out.println("*****************************7. Salir del sistema*************************************************************************************************************");
+  System.out.println("**************************** 3. calcular lo de una semana  ****************************************************************************************************");
+  System.out.println("*****************************4. dar D alta                 ****************************************************************************************************");
+  System.out.println("**************************** 6. calcular el servicio       ****************************************************************************************************");
+  System.out.println("*****************************7. promedio de los servicios  ******************************************************************************************************");
+  System.out.println("*****************************8. total costo                **************************************************************************************************");
+  System.out.println("*****************************9. generar reporte de servicios************************************************************************************************");
+  System.out.println("*****************************10.reporte con fecha inicial y final*******************************************************************************************");
+  System.out.println("*****************************11. Salir del sistema          *************************************************************************************************");
   System.out.println("**************************************************************************************************************************************************************");
   System.out.println("**************************************************************************************************************************************************************");
  
-  while(userInput != 5){
+  while(userInput != 10){
 	  if(userInput == 1){
 		  		  
    System.out.println("Cual es el nombre del cliente?");
@@ -72,30 +63,30 @@ public void showMenu(){
    String cellphone = reader.nextLine();
    
    
-  Clien client= new Client (name, identity, address, cellphone);
+  Client client= new Client (name, identity, address, cellphone);
   
   
-   System.out.println("Cuantas mascotas que quiere tener?");
+   System.out.println("Cuantas mascotas quiere que atiendan ?");
    int numb = reader.nextInt();
    reader.nextLine();
 
-   ArrayList<Pet> clientsPets = new ArrayList<Pet>();
+   ArrayList<Pet> clientPet = new ArrayList<Pet>();
       for(int i = 0; i < numb ; i++){
    System.out.println("Cual es  el nombre de su mascota? ");
    String namePet = reader.nextLine();
    
-     System.out.println("Cual es  el peso de su mascota? ");
+   System.out.println("Cual es  el peso de su mascota? ");
 
    double weightPet = reader.nextDouble();
    reader.nextLine();
    
-      System.out.println("Cual es  tipo de su mascota? ");
+   System.out.println("Cual es  tipo de su mascota? ");
 
    System.out.println("Perro ");
    System.out.println("Gato ");
    System.out.println("Pajaro ");
    System.out.println("Otro ");
-   String animal = reader.nextLine();
+   String typeOfPet = reader.nextLine();
 
    System.out.println("Cual es  la edad de su mascota? ");
    int ageOfPet = reader.nextInt();
@@ -105,23 +96,17 @@ public void showMenu(){
    double heightPet = reader.nextDouble();
    reader.nextDouble();
    
-   
-   System.out.println("Cual es  el imc de la mascota? ");
-   double imc = reader.nextDouble();
-   reader.nextDouble();
  
-   System.out.println("Cual el la identificacion? ");
-   String identity = reader.nextInt();
-      reader.nextLine();
+  
    
-   Pet pet = new Pet( namePet, weightPet,  typeOfPet, ageOfPet , heightPet, ,  identity);
-   clientsPets.add(pet);
-   vet.addClient(client,clientsPets);
+   Pet pet1 = new Pet( namePet, weightPet,  typeOfPet, ageOfPet , heightPet,  identity);
+   clientPet.add(pet1);
+   vet.addClient( name,  identity,  address,  cellphone);
    System.out.println("Se ha añadido la mascota con exito");
    
 	}
 	  }	  
-   else if(userImput == 2){
+   else if(userInput == 2){
 
       System.out.println("Cual es el id del cliente?");
       String identity = reader.nextLine();
@@ -138,7 +123,7 @@ public void showMenu(){
       int month = reader.nextInt();
       reader.nextLine();
 
-      System.out.println("Cual es  año de ingreso? ");
+      System.out.println("Cual es  anio de ingreso? ");
       int year = reader.nextInt();
       reader.nextLine();
 
@@ -148,7 +133,7 @@ public void showMenu(){
       String name = reader.nextLine();
 
       System.out.println("Cual es  el id del cliente?");
-      String identity = reader.nextLine();
+      String identificationOfClient = reader.nextLine();
       reader.nextLine();
 
       System.out.println("Cual es  el nombre completo de la mascota?");
@@ -159,79 +144,163 @@ public void showMenu(){
 
       System.out.println("Cual es el diagnostico ?");
       String diagnostic = reader.nextLine();
+	  
+	  System.out.println("Cual es la raza ?");
+      String race = reader.nextLine();
 
       System.out.println("Cual es el estado?");
       String state = reader.nextLine();
       reader.nextLine();
 
       System.out.println("Cual es el nombre del medicamento?");
-      String medi = reader.nextLine();
+      String nameM = reader.nextLine();
 
       System.out.println("Cual es la dosis?");
-      double dos = reader.nextDouble();
+      double dose = reader.nextDouble();
       reader.nextLine();
-
-      System.out.println("Cual es la  dosis total?");
-      double totaldos = reader.nextDouble();
+	  
+	  System.out.println("Cual es el costo dosis?");
+      double doseCost = reader.nextDouble();
       reader.nextLine();
-
-      System.out.println("Cual es la frecuencia del medicamento?");
-      String name = reader.nextLine();
+	  
+      System.out.println("Cual es la frecuencia?");
+      int frecuency = reader.nextInt();
       reader.nextLine();
+	  
+	   System.out.println("Cual es el peso?");
+	  double weightPet = reader.nextDouble();
+      reader.nextLine();
+	  
+       System.out.println("Cual es  tipo de su mascota? ");
 
+      System.out.println("Perro ");
+	  System.out.println("Gato ");
+	  System.out.println("Pajaro ");
+      System.out.println("Otro ");
+      String typeOfPet = reader.nextLine();
+	  
+	  System.out.println("Cual es  la edad de su mascota? ");
+      int ageOfPet = reader.nextInt();
+      reader.nextLine();
+	  
+	  
+	  
+	
+   System.out.println("Cual es su dirección? ");
+   String address = reader.nextLine();
 
-      Pet pets = vet.findPett(nameClie, idClie, namePe);
+   System.out.println("Cual es su celular?");
+   String cellphone = reader.nextLine();
+   
+   
+  Client client= new Client (name, identity, address, cellphone);
+	  
+	 Client c = new Client(name, identity, address, cellphone);
 
-      ClinicalHistory newClinicalHistory = new ClinicalHistory( nameClie, namePe , symp, diag, stat, dateIn, pets);
+    
 
-      Medicament medicament = new Medicament(medi, dos, totaldos, frec);
+      ClinicalHistory newClinicalHistory = new ClinicalHistory(  symptom,  diagnostic ,  state,  race,  namePet, weightPet ,  typeOfPet,  ageOfPet,  day,  month,  year,  c );
 
-      vet.hospitilizeAPet(String symptom, String diagnostic , String race, String namePet,double weightPet , String typeOfPet, int ageOfPet, int day, int month, int year, String identificationOfClient);
+      Medicament medicament = new Medicament( nameM,  dose,  doseCost,  frecuency);
 
-	  System.out.println(vet.hospitalize(clientId, petName));
+      vet.hospitilizeAPet( symptom,  diagnostic ,  race,  namePet, weightPet ,  typeOfPet,  ageOfPet,  day,  month,  year,  identificationOfClient);
+
+	  System.out.println(vet.hospitilizeAPet( symptom,  diagnostic ,  race,  namePet, weightPet ,  typeOfPet,  ageOfPet,  day,  month,  year,  identificationOfClient));
 
   }
   
-  else if(userImput ==3){
+  else if(userInput ==3){
      System.out.println("Cual es el dia actual?");
-     int actualDay = reader.nextInt();
+     int currentDay = reader.nextInt();
      reader.nextLine();
 
-     System.out.println("Cual es el mes actual?");
-     int actualMonth = reader.nextInt();
-     reader.nextLine();
-
-     System.out.println("Cual es el año actual?");
-     int actualYear = reader.nextInt();
-     reader.nextLine();
-
-     vet.calculatedPay(actualDay, actualMonth, actualYear);
-     System.out.println(vet.calculatedPay(actualDay, actualMonth, actualYear));
+  
+     vet.earningsForWeek(currentDay);
+     System.out.println(vet.earningsForWeek( currentDay));
 
 
   }
-  else if(userImput ==4){
-    System.out.println(vet.showClients());
+  else if(userInput ==4){
 
     System.out.println("Por favor digite el nombre del usuario para dar de alto a su animal");
     String namePet = reader.nextLine();
     reader.nextLine();
 
-    System.out.println(" digite el nombre de su mascota para darle de alta");
-    String nampe = reader.nextLine();
 
-    System.out.println(vet.String D_Alta(String namePet));
+    System.out.println(vet. D_Alta( namePet));
   }
+
+
+  else if(userInput == 5){
+
+System.out.println("El costo del servicio de lavado de mascotas es:" + vet.costService1());
+System.out.println("El costo del servicio de lavado de mascotas a domicilios es:" + vet.costService2());
+System.out.println("El costo del servicio de corte de uñas de mascotas es:" + vet.costService3());
+System.out.println("El costo del servicio de profilaxis dental mascotas es:" + vet.costService4());
+System.out.println("El costo del servicio de aplicacion de vacunas para mascotas es:" + vet.costService5());
+
+}
+else if(userInput == 6){
+
+System.out.println(vet.promeOfTheServices());
+
+
+}
+else if(userInput == 7){
+
+System.out.println("El ingreso total de los servicios es:" + vet.calculateTotalService());
+
+}
+else if(userInput == 8){
+
+System.out.println("El el reporte de los servicios es:" + ser.reportInformation());
+
+}else if(userInput == 9){   
+
+
+System.out.println("Por favor digite la fecha inicial de esta forma: anio/mes/dia : ");
+
+String admissionDate = reader.nextLine();
+
+System.out.println("Por favor digite la fecha final de esta forma: anio/mes/dia : ");
+
+String departureDate = reader.nextLine();
+
+System.out.println(vet.getReportWithDate(admissionDate,departureDate));
+
+
+}
+ 
   else{
 	  
 	  System.out.println("VUELVA PRONTO");
 	  
 	  }
-	 }
-   }
-   
- 
+	}
+}
+public void init(){
+ vet = new Veterinary("Mi pequenia mascota");
+		
+	 
 	  
-	
-  
+	  
+	  
+	  
+	 Client Pepe = new Client("Pepe","1006098152","calle", "3308206");
+	 Pet misifus = new Pet("misifus",15.0,"C",10,1.5,"1234");
+	 ArrayList<Pet> petClient1 = new ArrayList<Pet>();
+	 petClient1.add(misifus);
+	 vet.addClient("Pepe","1006098152","calle", "3308206");
+	   
+	 Client Carlos = new Client("Carlos","1006098153","calle","3312678");
+	 Pet Rodolfo = new Pet("Rodolfo",16.0,"D",5,1.9,"1235");
+	 ArrayList<Pet> petClient2 = new ArrayList<Pet>();
+	 petClient2.add(Rodolfo);
+	 vet.addClient("Carlos","1006098153","calle","3312678");
+	 
+	 
+	 
+
+}
+
 }

@@ -1,26 +1,26 @@
 package model;
 public class Medicament{
 //attributes
-private String name;
+private String nameM;
 private double dose;
 private double doseCost;
 private int frecuency;
 
 //constructor 
  
- public Medicament (String name, double dose, double doseCost, int frecuency){
+ public Medicament (String nameM, double dose, double doseCost, int frecuency){
 	
-	 this.name = name;
+	 this.nameM = nameM;
 	 this.dose = dose;
 	 this.doseCost= doseCost;
 	 this.frecuency = frecuency;
 	 
  }
- public String getName(){
-	 return name;
+ public String getNameM(){
+	 return nameM;
  }
-public void setName(String name){
-	this.name= name;
+public void setName(String nameM){
+	this.nameM= nameM;
 }
 public double getDose(){
 	return dose;
@@ -41,7 +41,6 @@ public void setrFrecuency(int frecuency){
 	this.frecuency=frecuency;
 }
 
-//new medicament deberia ir en el main?
 
 
 
@@ -51,7 +50,7 @@ public void setrFrecuency(int frecuency){
 public String ShowMedicamentInformation(){
  String msj = "";
  msj += "---------------------------------------------------------------------------------------------------------------------------- \n";
- msj += "El nombre es:" + name + "\n";
+ msj += "El nombre es:" + nameM + "\n";
  msj += "---------------------------------------------------------------------------------------------------------------------------- \n";
  msj += "La dosis es:" + dose + "\n";
  msj += "---------------------------------------------------------------------------------------------------------------------------- \n";
