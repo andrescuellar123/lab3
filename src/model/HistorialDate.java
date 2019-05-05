@@ -56,7 +56,7 @@ public int getYear(){
 }
 /**
 *Description este metodo establece el anio de la historia
-*@param ageOfPet int el anio de la historia
+*@param year int el anio de la historia
 */
 public void setYear(int year){
 	this.year=year;

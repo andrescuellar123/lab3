@@ -177,11 +177,11 @@ public void setAgeOfPet(int ageOfPet){
 *Description This method allows to add new medicines that were prescription during the hospitalization at the patient stories.
 *pre: The patient clinic story must be not null.
 *post: New medicines were added to the patient clinic story.
-*@param The medicine name. This param must be not null.
-*@param The medicine dose, this param refers to the amount of medicine supplied to the pet each time according the frequence assigned.
-*@param The medicine cost by each dose. This param could be empty.
-*@param The frequency of medicine application. This param could be empty.
-*@return A message that indiques if medicine was added to the patient clinic story
+*@param  name String. This param must be not null.
+*@param  dose double, this param refers to the amount of medicine supplied to the pet each time according the frequence assigned.
+*@param  doseCost String by each dose. This param could be empty.
+*@param   frecuency String of medicines application. This param could be empty.
+*@return A String message that indiques if medicine was added to the patient clinic story
 */
 
 public String addMedicament(String name, double dose, String doseCost, String frecuency) {

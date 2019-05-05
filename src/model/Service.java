@@ -83,14 +83,14 @@ public void setCost(double cost){
 *Description este metodo trae la fecha del servicio
 *@return String la fecha en la que se hizo
 */
-public String getDateThatItDoIt(){
+public String getDate(){
   return date;
 }
 /**
 *Description este metodo da la fecha del servicio
 *@param date String la fecha que se hizo
 */
-public void setDateThatItDoIt(String date){
+public void setDate(String date){
   this.date = date;
 }
 /**

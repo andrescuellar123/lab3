@@ -135,8 +135,7 @@ public void setIdentity(String identity){
 *Description This method allows to calculate the body mass index for a pet.
 *pre: The pet was created before and its attributes height and weight are not null neither height must be zero.
 *post: The BMI is calculated.
-*@return double turn The pet body mass index.
-*@throws I the height is zero, so an exception is thrown due to the division on zero does not exist.
+*@return The pet body mass index. Returns -1 if the height is zero  due to the division on zero does not exist.
 */
 
 //Pet imc

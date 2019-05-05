@@ -39,7 +39,7 @@ public void setName(String name){
 
 /**
 *Description Este metodo obtiene el tipo de servicios
-*@return ArrayList<Service> el tipo de servicio
+*@return Service el tipo de servicio
 */
 public ArrayList<Service> getServiceVet(){
 		return serviceVet;
@@ -47,7 +47,7 @@ public ArrayList<Service> getServiceVet(){
 
 /**
 *Description este metodo establece el tipo de servicios
-*@param serviceVet ArrayList<Service> el tipo de servicio
+*@param serviceVet ArrayList el tipo de servicio
 **/
 
 public void setTypeOfServiceVeterinary(ArrayList<Service> serviceVet){
@@ -189,7 +189,7 @@ public void addPetToAClient(String identityOfClient, String namePet, double weig
 }
 /**
 *Description este metodo posicion del cuarto con el nombre
-*@param name String el nombre de la mascota
+*@param namePet String el nombre de la mascota
 *@return int la posicion
 */
 public int positionRoomWithName(String namePet) {
@@ -200,11 +200,11 @@ public int positionRoomWithName(String namePet) {
 		}
 	}
 
-	return position;	
+	return 	position;	
 }
 /**
 *Description este metodo da d alta al animal
-*@param name String el nombre de la mascota
+*@param  namePet String el nombre de la mascota
 *@return String la informacion de la mascota
 */
 
@@ -225,8 +225,9 @@ public String D_Alta(String namePet){
 *Description This method allows to update the basic data of a veterinary client, these data include, address and phone number.
 *pre: The client was created before.
 *post: The address and /or phone number of the client is updated.
-*@Param The new address of the client. This param could be empty.
-*@Param The new phone number of the client. This param could be empty.
+*@param  identity String of the client
+*@param  nAddress String of the client. This param could be empty.
+*@param  nPhone String number of the client. This param could be empty.
 */
 
 public void updateBasicInformation( String identity, String nAddress, String nPhone){
@@ -249,8 +250,38 @@ public void updateBasicInformation( String identity, String nAddress, String nPh
 
 
 /**
+*Description esste metodo genera un reporte acerca de la informacion que se encuentre en esas fechas
+*pre: la fecha se debe digitar  asi AAAA-MM-DD
+*@param admissionDate String la fecha de ingreso
+*@param DepartureDate String la fecha salida
+*@return String el tipo de servicio que se le hizo a la mascota
+*/
+public String getReportWithDate(String admissionDate,String DepartureDate){
+String msg = "";
+
+for(int i = 0; i < serviceVet.size();i++){
+Service de = serviceVet.get(i);
+
+if(admissionDate.compareTo(de.getDate()) <= 0 && de.getDate().compareTo(DepartureDate) <= 0){
+
+  msg = "El reporte es:" + "\n" +de.reportInformation();
+
+}else{
+  msg = "fecha erronea";
+}
+
+
+}
+
+return msg;
+
+}
+
+
+
+/**
 *Description esste metodo calcula cuantas veces aparece el servicio 1
-*pre: tipoDeServicio !=null
+*pre: Servicio !=null
 *post: las veces que aparece el servicio 1
 *@return int el numero de veces del servicio 1
 */
@@ -267,7 +298,7 @@ return i;
 }
 /**
 *Description este metodo calcula el servicio 1
-*pre: tipoDeServicio !=null
+*pre: Servicio !=null
 *post: el costo del servicio 1
 *@return double el costo del servicio
 */
@@ -293,7 +324,7 @@ return m;
 
 /**
 *Description este metodo calcula cuantas veces aparece el servicio 2
-*pre: tipoDeServicio !=null
+*pre: Servicio !=null
 *post: las veces que aparece el servicio 2
 *@return int el numero de veces del servicio 2
 */
@@ -311,7 +342,7 @@ return i;
 
 /**
 *Description este metodo calcula el servicio 2
-*pre: tipoDeServicio !=null
+*pre: Servicio !=null
 *post: el costo del servicio 2
 *@return double el costo del servicio
 */
@@ -338,7 +369,7 @@ return m;
 
 /**
 *Description esste metodo calcula cuantas veces aparece el servicio 3
-*pre: tipoDeServicio !=null
+*pre: Servicio !=null
 *post: las veces que aparece el servicio 3
 *@return int el numero de veces del servicio 3
 */
@@ -356,7 +387,7 @@ return i;
 
 /**
 *Description este metodo calcula el servicio 3
-*pre: tipoDeServicio !=null
+*pre: Servicio !=null
 *post: el costo del servicio 3
 *@return double el costo del servicio
 */
@@ -381,7 +412,7 @@ return m;
 
 /**
 *Description esste metodo calcula cuantas veces aparece el servicio 4
-*pre: tipoDeServicio !=null
+*pre: Servicio !=null
 *post: las veces que aparece el servicio 4
 *@return int el numero de veces del servicio 4
 */
@@ -399,7 +430,7 @@ return i;
 
 /**
 *Description este metodo calcula el servicio 4
-*pre: tipoDeServicio !=null
+*pre: Servicio !=null
 *post: el costo del servicio 4
 *@return double el costo del servicio
 */
@@ -424,7 +455,7 @@ return m;
 
 /**
 *Description esste metodo calcula cuantas veces aparece el servicio 5
-*pre: tipoDeServicio !=null
+*pre: Servicio !=null
 *post: las veces que aparece el servicio 5
 *@return int el numero de veces del servicio 5
 */
@@ -480,14 +511,37 @@ return h;
 *@return double el promedio de costos
 */
 public double promeOfTheServices(){
-double costTotal = 0.0;
+double prom = 0.0;
 
-costTotal += (calculatedService1() + calculatedService2() + calculatedService3() + calculatedService4() + calculatedService5())/( calculateappearences1()+ calculateappearences2()+ calculateappearences3()+ calculateappearences4()+ calculateappearences5());
+prom += (calculatedService1() + calculatedService2() + calculatedService3() + calculatedService4() + calculatedService5())/( calculateappearences1()+ calculateappearences2()+ calculateappearences3()+ calculateappearences4()+ calculateappearences5());
 
-return costTotal;
+return prom;
 
 }
 
+
+
+/**
+* Description este metodo calcula la ganancia de la veterinaria en una semana
+* @param currentDay int el dia actual
+* @return double la ganancia en una semana
+*/
+public double earningsForWeek(int currentDay){
+
+double week = 0.0;
+int currentDate = (currentDay + 7);
+
+if(currentDate > 30){
+   week = calculateTotalService()/(currentDate % 30);
+}else if(currentDate < 30){
+   week = calculateTotalService()/currentDate;
+}
+
+
+return week;
+
+
+}
 
 
 

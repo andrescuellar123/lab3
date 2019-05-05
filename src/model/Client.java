@@ -86,7 +86,7 @@ public void setCellphone(String cellphone){
 }
 /**
 *Description este metodo establece el arraylist de las mascotas
-@return ArrayList<Pet> el arraylist de las mascotas
+@return Pet el arraylist de las mascotas
 */
 public ArrayList<Pet> getPets(){
 	return pets;
@@ -101,6 +101,7 @@ public void addPet(Pet p) {
 /**
 *Description este metodo encuentra una mascota
 *@param name String el telefono del cliente
+@return Pet encontrado
 */
 public Pet findPet(String name) {
 	Pet found=null;
