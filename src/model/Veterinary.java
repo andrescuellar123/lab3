@@ -9,6 +9,7 @@ private String name;
 private ArrayList<Client> clients;
 private Room[] rooms;
 private ArrayList<ClinicalHistory> histories;
+private ArrayList<Service> serviceVet;
 //constructor
 public Veterinary (String name){
 	this.name= name;
@@ -18,14 +19,62 @@ public Veterinary (String name){
 		rooms[i]=new Room(true);
 	}
 	histories = new ArrayList<ClinicalHistory>();
+	serviceVet = new ArrayList<Service>();
+
 }
+
 public String getName(){
 	return name=name;
 }
+/**
+*Description este metodo establece el nombre de la veterinaria
+*@param name String el nombre de la veterinaria
+*/
 public void setName(String name){
 	this.name=name;
 }
 
+
+
+
+/**
+*Description Este metodo obtiene el tipo de servicios
+*@return ArrayList<Service> el tipo de servicio
+*/
+public ArrayList<Service> getServiceVet(){
+		return serviceVet;
+	}
+
+/**
+*Description este metodo establece el tipo de servicios
+*@param serviceVet ArrayList<Service> el tipo de servicio
+**/
+
+public void setTypeOfServiceVeterinary(ArrayList<Service> serviceVet){
+		this.serviceVet = serviceVet;
+	}
+
+/**
+*Description Este metodo agrega el tipo de servicios
+*@param m typeOfService el tipo de servivio
+*@param p Pet La mascota
+*/
+public void addServiceWithPet(Service m , Pet p){
+
+serviceVet.add(m);
+serviceVet.get((serviceVet.size()-1)).setPetTypeOfService(p);
+}
+
+
+
+
+/**
+*Description este metodo agrega un cliente
+*@param name String el nombre del cliente
+*@param identity String la identidad del cliente
+*@param address String la direcciondel cliente
+*@param cellphone String el telefono del cliente
+*/
 public void addClient(String name, String identity, String address, String cellphone) {
 	Client c= new Client(name, identity, address, cellphone);
 	clients.add(c);
@@ -58,6 +107,11 @@ public String getDataOfAClientByHisName(String name) {
 	return "name: "+target.getName()+" Identity: "+target.getIdentity()+" Address: "+target.getAddress();
 
 }
+/**
+*Description este metodo trae los datos del cliente por el nombre de la mascota
+*@param name String el nombre de la mascota
+*@return String la respuesta
+*/
 
 public String getDataOfAClientByTheNameOfHisPet(String name) {
 	Client target= null;
@@ -76,7 +130,21 @@ public String getDataOfAClientByTheNameOfHisPet(String name) {
 	}
 	return answer;
 }
-
+/**
+*Description este metodo da la hospitalizacion
+*@param symptom String el sintoma de la mascota
+*@param diagnostic String el diagnostico de la mascota
+*@param race String la raza de la mascota
+*@param namePet String el nombre de la mascota
+*@param weightPet double el peso de la mascota
+*@param typeOfPet String el tipo de la mascota
+*@param ageOfPet int los anios de la mascota
+*@param day int el dia de la hospitalizacion
+*@param month int el mes de la hospitalizacion
+*@param year int el anio de la hospitalizacion
+*@param identificationOfClient String la idnetificacion del cliente
+*@return boolean hospializado
+*/
 
 public boolean hospitilizeAPet(String symptom, String diagnostic , String race, String namePet,double weightPet , String typeOfPet, int ageOfPet, int day, int month, int year, String identificationOfClient) {
 	Client target= null;
@@ -98,8 +166,18 @@ public boolean hospitilizeAPet(String symptom, String diagnostic , String race, 
 	}
 	return added;
 }
-public void addPetToAClient(String identityOfClient, String namePet, double weightPet, String typeOfPet, int ageOfPet , double heightPet, double imc, String identity) {
-	Pet p= new Pet(namePet, weightPet,  typeOfPet, ageOfPet , heightPet, imc,  identity);
+/**
+*Description este metodo agrega una mascota
+*@param identityOfClient String la identidad del cliente
+*@param namePet String el nombre de la mascota
+*@param weightPet double el peso de la mascota
+*@param typeOfPet String el tipo de la mascota
+*@param ageOfPet int los anios de la mascota
+*@param heightPet double alto de la mascota
+*@param identity String identidad de la mascota
+*/
+public void addPetToAClient(String identityOfClient, String namePet, double weightPet, String typeOfPet, int ageOfPet , double heightPet, String identity) {
+	Pet p= new Pet(namePet, weightPet,  typeOfPet, ageOfPet , heightPet,  identity);
 	Client target= null;
 	for(int i=0;i<clients.size();i++) {
 		if(clients.get(i).getIdentity().equals(identityOfClient)) {
@@ -109,7 +187,11 @@ public void addPetToAClient(String identityOfClient, String namePet, double weig
 	target.addPet(p);
 
 }
-
+/**
+*Description este metodo posicion del cuarto con el nombre
+*@param name String el nombre de la mascota
+*@return int la posicion
+*/
 public int positionRoomWithName(String namePet) {
 	int position = -1;
 	for(int i=0;i<rooms.length&& position==-1;i++) {
@@ -120,6 +202,11 @@ public int positionRoomWithName(String namePet) {
 
 	return position;	
 }
+/**
+*Description este metodo da d alta al animal
+*@param name String el nombre de la mascota
+*@return String la informacion de la mascota
+*/
 
 public String D_Alta(String namePet){
 	int pos = positionRoomWithName(namePet);
@@ -158,6 +245,249 @@ public void updateBasicInformation( String identity, String nAddress, String nPh
 		}
 	}
 }
+
+
+
+/**
+*Description esste metodo calcula cuantas veces aparece el servicio 1
+*pre: tipoDeServicio !=null
+*post: las veces que aparece el servicio 1
+*@return int el numero de veces del servicio 1
+*/
+public int  calculateappearences1(){
+	int i  = 0;
+
+for(int p = 0; p < serviceVet.size(); p++){
+Service services = serviceVet.get(i);
+	if(services.getService().equals(Service.service1)){
+			i++;
+	}
+}
+return i;
+}
+/**
+*Description este metodo calcula el servicio 1
+*pre: tipoDeServicio !=null
+*post: el costo del servicio 1
+*@return double el costo del servicio
+*/
+public double calculatedService1(){
+  double m = 0.0;
+
+for(int i = 0; i < serviceVet.size(); i++){
+Service services = serviceVet.get(i);
+
+if(services.getService().equals(Service.service1)){
+  m += Service.wash;
+}
+
+}
+return m;
+}
+
+
+
+
+
+
+
+/**
+*Description este metodo calcula cuantas veces aparece el servicio 2
+*pre: tipoDeServicio !=null
+*post: las veces que aparece el servicio 2
+*@return int el numero de veces del servicio 2
+*/
+public int  calculateappearences2(){
+	int i  = 0;
+
+for(int p = 0; p < serviceVet.size(); p++){
+Service services = serviceVet.get(i);
+	if(services.getService().equals(Service.service2)){
+			i++;
+	}
+}
+return i;
+}
+
+/**
+*Description este metodo calcula el servicio 2
+*pre: tipoDeServicio !=null
+*post: el costo del servicio 2
+*@return double el costo del servicio
+*/
+
+public double calculatedService2(){
+  double m = 0.0;
+
+for(int i = 0; i < serviceVet.size(); i++){
+Service services = serviceVet.get(i);
+
+if(services.getService().equals(Service.service2)){
+  m += Service.washPetDom;
+}
+
+}
+return m;
+}
+
+
+
+
+
+
+
+/**
+*Description esste metodo calcula cuantas veces aparece el servicio 3
+*pre: tipoDeServicio !=null
+*post: las veces que aparece el servicio 3
+*@return int el numero de veces del servicio 3
+*/
+public int  calculateappearences3(){
+	int i  = 0;
+
+for(int p = 0; p < serviceVet.size(); p++){
+Service services = serviceVet.get(i);
+	if(services.getService().equals(Service.service3)){
+			i++;
+	}
+}
+return i;
+}
+
+/**
+*Description este metodo calcula el servicio 3
+*pre: tipoDeServicio !=null
+*post: el costo del servicio 3
+*@return double el costo del servicio
+*/
+
+public double calculatedService3(){
+  double m = 0.0;
+
+for(int i = 0; i < serviceVet.size(); i++){
+Service services = serviceVet.get(i);
+
+if(services.getService().equals(Service.service3)){
+  m += Service.cut;
+}
+
+}
+return m;
+}
+
+
+
+
+
+/**
+*Description esste metodo calcula cuantas veces aparece el servicio 4
+*pre: tipoDeServicio !=null
+*post: las veces que aparece el servicio 4
+*@return int el numero de veces del servicio 4
+*/
+public int  calculateappearences4(){
+	int i  = 0;
+
+for(int p = 0; p < serviceVet.size(); p++){
+Service services = serviceVet.get(i);
+	if(services.getService().equals(Service.service4)){
+			i++;
+	}
+}
+return i;
+}
+
+/**
+*Description este metodo calcula el servicio 4
+*pre: tipoDeServicio !=null
+*post: el costo del servicio 4
+*@return double el costo del servicio
+*/
+
+public double calculatedService4(){
+  double m = 0.0;
+
+for(int i = 0; i < serviceVet.size(); i++){
+Service services = serviceVet.get(i);
+
+if(services.getService().equals(Service.service4)){
+  m += Service.dent;
+}
+
+}
+return m;
+}
+
+
+
+
+
+/**
+*Description esste metodo calcula cuantas veces aparece el servicio 5
+*pre: tipoDeServicio !=null
+*post: las veces que aparece el servicio 5
+*@return int el numero de veces del servicio 5
+*/
+public int calculateappearences5(){
+	int i  = 0;
+
+for(int p = 0; p < serviceVet.size(); p++){
+Service services = serviceVet.get(i);
+	if(services.getService().equals(Service.service5)){
+			i++;
+	}
+}
+return i;
+}
+
+/**
+*Description este metodo calcula el servicio 5
+*pre: Servicio !=null
+*post: el costo del servicio 5
+*@return double el costo del servicio
+*/
+
+public double calculatedService5(){
+  double m = 0.0;
+
+for(int i = 0; i < serviceVet.size(); i++){
+Service services = serviceVet.get(i);
+
+if(services.getService().equals(Service.service5)){
+  m += Service.vacunnes;
+}
+
+}
+return m;
+}
+
+/**
+* Description este metodo calcula la suma de  todos los servicios
+* @return double el costo total de los servicios totales
+*/
+public double calculateTotalService(){
+double h = 0.0;
+
+h += (calculatedService1() + calculatedService2() + calculatedService3() + calculatedService4() + calculatedService5());
+
+return h;
+
+}
+
+
+/**
+*Description este metodo calcula el promedio de los costos 
+*@return double el promedio de costos
+*/
+public double promeOfTheServices(){
+double costTotal = 0.0;
+
+costTotal += (calculatedService1() + calculatedService2() + calculatedService3() + calculatedService4() + calculatedService5())/( calculateappearences1()+ calculateappearences2()+ calculateappearences3()+ calculateappearences4()+ calculateappearences5());
+
+return costTotal;
+
+}
+
 
 
 

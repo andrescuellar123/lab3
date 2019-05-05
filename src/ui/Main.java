@@ -15,14 +15,14 @@ public class Main{
  public void init(){
 	 
 	 vet = new Veterinary("Mi pequenia mascota");
-	 
-	   Pet pet1 = new Pet("misifus",15.0,"C",10,1.5,15.0,"1234");
-	  Pet pet2 = new Pet("Rodolfo",16.0,"D",5,1.9,16.0,"1235");
+		
+	   Pet pet1 = new Pet("misifus",15.0,"C",10,1.5,"1234");
+	  Pet pet2 = new Pet("Rodolfo",16.0,"D",5,1.9,"1235");
 	  
 	  
 	  
-	 Client client1 = new Client("Pepe","1006098152","calle", 3308206);
-	 Client client2 = new Client("Carlos","1006098153","calle",3312678);
+	 Client client1 = new Client("Pepe","1006098152","calle", "3308206");
+	 Client client2 = new Client("Carlos","1006098153","calle","3312678");
  }
  public Main() {
 
@@ -46,10 +46,10 @@ public void showMenu(){
 
   System.out.println("***************************************************************************************************************************************************************");
   System.out.println("*****************************VETERINARY MI PEQUEÑA MASCOTA ****************************************************************************************************");
-  System.out.println("*****************************1. Registrarse con la mascota    *************************************************************************************************");
-  System.out.println("*****************************2. informacion cliente y mascota *************************************************************************************************");
+  System.out.println("*****************************1. Registrarse con la mascota ****************************************************************************************************");
+  System.out.println("*****************************2. hospitalizar la mascota    ****************************************************************************************************");
   System.out.println("**************************** 3. infromacion actual  ***********************************************************************************************************");
-  System.out.println("*****************************4. informacion del medicamento   *************************************************************************************************");
+  System.out.println("*****************************4. dar D alta   ******************************************************************************************************************");
   System.out.println("*****************************5. informacion de la historia clinica ********************************************************************************************");
   System.out.println("**************************** 6. ********************************************************************************************************");
   System.out.println("*****************************7. Salir del sistema*************************************************************************************************************");
@@ -86,7 +86,7 @@ public void showMenu(){
    
      System.out.println("Cual es  el peso de su mascota? ");
 
-   double weightOfPet = reader.nextDouble();
+   double weightPet = reader.nextDouble();
    reader.nextLine();
    
       System.out.println("Cual es  tipo de su mascota? ");
@@ -110,8 +110,11 @@ public void showMenu(){
    double imc = reader.nextDouble();
    reader.nextDouble();
  
+   System.out.println("Cual el la identificacion? ");
+   String identity = reader.nextInt();
+      reader.nextLine();
    
-   Pet pet = new Pet( namePet, weightPet,  typeOfPet, ageOfPet , heightPet, imc,  identity);
+   Pet pet = new Pet( namePet, weightPet,  typeOfPet, ageOfPet , heightPet, ,  identity);
    clientsPets.add(pet);
    vet.addClient(client,clientsPets);
    System.out.println("Se ha añadido la mascota con exito");
@@ -121,7 +124,7 @@ public void showMenu(){
    else if(userImput == 2){
 
       System.out.println("Cual es el id del cliente?");
-      long clientId = reader.nextLong();
+      String identity = reader.nextLine();
       reader.nextLine();
 
       System.out.println("Cual es  el nombre de la mascota?");
@@ -139,26 +142,26 @@ public void showMenu(){
       int year = reader.nextInt();
       reader.nextLine();
 
-      HistorialDated dateIn = new HistorialDated(dai, mon, yea);
+      HistorialDate da = new HistorialDate( day,  month,  year);
 	  
 	  System.out.println("Cual es  nombre del dueño? ");
-      String nameClie = reader.nextLine();
+      String name = reader.nextLine();
 
       System.out.println("Cual es  el id del cliente?");
-      long idClie = reader.nextLong();
+      String identity = reader.nextLine();
       reader.nextLine();
 
       System.out.println("Cual es  el nombre completo de la mascota?");
-      String namePe = reader.nextLine();
+      String namePet = reader.nextLine();
 
       System.out.println("Cual es  el sintoma del animal?");
-      String symp = reader.nextLine();
+      String symptom = reader.nextLine();
 
       System.out.println("Cual es el diagnostico ?");
-      String diag = reader.nextLine();
+      String diagnostic = reader.nextLine();
 
       System.out.println("Cual es el estado?");
-      boolean stat = reader.nextBoolean();
+      String state = reader.nextLine();
       reader.nextLine();
 
       System.out.println("Cual es el nombre del medicamento?");
@@ -173,7 +176,7 @@ public void showMenu(){
       reader.nextLine();
 
       System.out.println("Cual es la frecuencia del medicamento?");
-      int frec = reader.nextInt();
+      String name = reader.nextLine();
       reader.nextLine();
 
 
@@ -183,7 +186,7 @@ public void showMenu(){
 
       Medicament medicament = new Medicament(medi, dos, totaldos, frec);
 
-      vet.hospitalizeVet(nameClie, idClie, namePe, newClinicalHistory, medicament);
+      vet.hospitilizeAPet(String symptom, String diagnostic , String race, String namePet,double weightPet , String typeOfPet, int ageOfPet, int day, int month, int year, String identificationOfClient);
 
 	  System.out.println(vet.hospitalize(clientId, petName));
 
@@ -210,14 +213,14 @@ public void showMenu(){
   else if(userImput ==4){
     System.out.println(vet.showClients());
 
-    System.out.println("Por favor digite la identificacion del usuario para dar de alto a su animal");
-    String idClientt = reader.nextLong();
+    System.out.println("Por favor digite el nombre del usuario para dar de alto a su animal");
+    String namePet = reader.nextLine();
     reader.nextLine();
 
     System.out.println(" digite el nombre de su mascota para darle de alta");
     String nampe = reader.nextLine();
 
-    System.out.println(vet.findToHospitalize(idClientt,nampe));
+    System.out.println(vet.String D_Alta(String namePet));
   }
   else{
 	  

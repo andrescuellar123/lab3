@@ -32,7 +32,22 @@ private HistorialDate altaDate;
 private ArrayList<Medicament> medicaments;
 private Client owner;
 
-
+//constructor
+/**
+*Description este constructor inicializa las variables
+*@param symptom String el nombre de la mascota
+*@param diagnostic String la identidad del cliente
+*@param state String direccion de la mascota
+*@param race String el telefono de la mascota
+*@param namePet String nombre de la mascota
+*@param weightPet double dpeso de la mascota
+*@param typeOfPet String tipo de mascota
+*@param ageOfPet int anios de la mascota
+*@param day int dia de la historia clinica
+*@param month int mes de la historia clinica
+*@param year int anio de la historia clinica
+*@param c Client es el cliente 
+*/
 public ClinicalHistory (String symptom, String diagnostic , String state, String race, String namePet,double weightPet , String typeOfPet, int ageOfPet, int day, int month, int year, Client c ){
 	this.symptom = symptom;
 	this.diagnostic = diagnostic;
@@ -50,50 +65,109 @@ public ClinicalHistory (String symptom, String diagnostic , String state, String
 public void setState(String s) {
 	state= s;
 }
+/**
+*Description el metodo nos da el sintoma de la mascota
+*@return String el nombre de la mascota
+*/
 public String getSymptom(){
 	return symptom;
 }
+/**
+*Description este metodo establece el sintoma de la mascota
+*@param symptom String el sintoma de la mascota
+*/
 public void setSymptom(String symptom){
 	this.symptom=symptom;
 }
+/**
+*Description el metodo nos da el diagnostico de la mascota
+*@return String el estado de la mascota
+*/
 public String getDiagnostic(){
 	return diagnostic;
-}
+}/**
+*Description este metodo establece el diagnostico de la mascota
+*@param diagnostic String el diagnostico de la mascota
+*/
 public void  setDiagnostic(String diagnostic ){
 	this.diagnostic=diagnostic;
 }
+/**
+*Description el metodo nos da el estado de la mascota
+*@return String el estado de la mascota
+*/
 public String getState(){
 	return state;
 }
 
+/**
+*Description el metodo nos da la raza de la mascota
+*@return String el raza de la mascota
+*/
 public String getRace(){
 	return race;
 }
+/**
+*Description este metodo establece la raza de la mascota
+*@param race String la raza de la mascota
+*/
 public void setRace(String race){
 	this.race=race;
 }
+/**
+*Description el metodo nos da el nombre de la mascota
+*@return String el nombre de la mascota
+*/
 public String getNamePet(){
 	return namePet;
 }
+/**
+*Description este metodo establece el nombre de la mascota
+*@param namePet String el nombre de la mascota
+*/
 public void setNamePet(String namePet){
 	this.namePet=namePet;
 }
+/**
+*Description el metodo nos da el peso de la mascota
+*@return double el peso de la mascota
+*/
 public double getWeightPet(){
 	return weightPet;
 }
+/**
+*Description este metodo establece el peso de la mascota
+*@param weightPet String el peso de la mascota
+*/
 public void setWeightPet(double weightPet){
 	this.weightPet = weightPet;
 }
+/**
+*Description el metodo nos da el tipo de la mascota
+*@return String el tipo de la mascota
+*/
 public String getTypeOfPet(){
 	return typeOfPet;
 }
+/**
+*Description este metodo establece el tipo de la mascota
+*@param typeOfPet String el tipo de la mascota
+*/
 public void setTypeOfPet(String typeOfPet){
 	this.typeOfPet=typeOfPet;
 }
+/**
+*Description el metodo nos da los anios de la mascota
+*@return int el anios de la mascota
+*/
 public int getAgeOfPet(){
 	return ageOfPet;
 
 }
+/**
+*Description este metodo establece el anio de la mascota
+*@param ageOfPet int el anio de la mascota
+*/
 public void setAgeOfPet(int ageOfPet){
 	this.ageOfPet=ageOfPet;
 }
@@ -209,7 +283,21 @@ public double calculateCost(int endDay, int endMonth, int endYear) {
 
 }
 
-//nuevas notas un String?
+//nuevas notas 
+
+/**
+*Description This method allows to add new notes to the possible diagnostic during the hospitalization at the patient stories.
+*pre: The patient clinic story must be not null.
+*post: New notes were added to the possible diagnostic in the patient clinic story.
+*@param notes String The notes of possible diagnostic. This param must be not null.
+*/
+public void addNotes(String notes){
+
+setDiagnostic(notes + getDiagnostic());
+
+}
+
+
 
 
 
